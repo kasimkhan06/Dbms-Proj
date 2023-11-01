@@ -1,0 +1,92 @@
+body {
+    background-image: url('../images/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.transparent-alert {
+    background-color: rgba(13, 19, 31, 0.6);
+    /* Set the background color to transparent white */
+    padding: 20px;
+    /* Add padding for spacing */
+    border-radius: 10px;
+    /* Add rounded corners for style */
+}
+
+
+.cust-font{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.cust-font h1{
+    padding-bottom: 5px;
+    display: inline;
+    border-bottom: solid white 1px;
+}
+
+.cust-btn{
+    display: flex;
+    margin-left: 70px;
+    margin-top: 40px;
+    padding: 15px 20px;
+    background: rgba(77, 77, 77 , 0.5);
+    color: white;
+    border-radius: 5px;
+}
+
+.cust-btn i{
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.cust-btn:hover{
+    background-color: rgb(23, 23, 24);
+}
+
+.my-form{
+    background-color:rgba(13, 19, 31, 0.6);
+    border-radius: 10px;
+}
+
+.form-control{
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-bottom: white 1px solid;
+    border-radius: 0;
+}
+.form-control:focus {
+    background-color: transparent;
+    border-color: white; /* Set your desired border color */
+    box-shadow: none; /* Optionally remove the box shadow */
+    color: white;
+    outline: none;
+  }
+
+.cust-icon{
+    margin-top: 5px;
+    padding-top: 35px;
+    margin-right: 5px;
+    padding-right: 10px;
+}
+
+.dropdown-menu .dropdown-item:hover{
+    background-color: rgb(101, 101, 102);
+}
+
+.custom-link a{
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom-link a:hover{
+    color:bisque
+}
+
+.no-email{
+    display: flex;
+    display: inline;
+    font-size: medium;
+}
