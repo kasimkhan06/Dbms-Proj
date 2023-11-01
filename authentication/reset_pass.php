@@ -1,4 +1,4 @@
-<?php
+<?php $title = "Reset Pass";
 include('../includes/header.php');
 ?>
 
@@ -33,12 +33,16 @@ include('../includes/header.php');
                     <form action="forgot_pass_code.php" method="post" class="m-2 p-3">
                         <div class="text-white d-flex pb-3">
                             <div>
-                                <input type="hidden" name="email" value="<?php if(isset($_GET['email'])) {echo $_GET['email'];}   ?>" class="form-control">
+                                <input type="hidden" name="email" value="<?php if (isset($_GET['email'])) {
+                                                                                echo $_GET['email'];
+                                                                            }   ?>" class="form-control">
                             </div>
                         </div>
                         <div class="text-white d-flex pb-3">
                             <div>
-                                <input type="hidden" name="token" value="<?php if(isset($_GET['token'])) {echo $_GET['token'];}   ?>" class="form-control">
+                                <input type="hidden" name="token" value="<?php if (isset($_GET['token'])) {
+                                                                                echo $_GET['token'];
+                                                                            }   ?>" class="form-control">
                             </div>
                         </div>
                         <div class="text-white d-flex pb-3">
