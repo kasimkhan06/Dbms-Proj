@@ -1,5 +1,8 @@
-<?php include('../includes/header.php'); include('../includes/authentication.php')?>
+<?php $title = "register";
+include('../includes/header.php');
+include('../includes/authentication.php') ?>
 
+<div class="page-container">
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center ">
@@ -67,7 +70,7 @@
                             </div>
                             <div class="mb-3 justify-content-center">
                                 <button type="submit" class="btn cust-btn" name="register_btn">
-                                    <i class="fa-solid fa-right-to-bracket fa-lg" style="color: #ebebeb;"></i>    
+                                    <i class="fa-solid fa-right-to-bracket fa-lg" style="color: #ebebeb;"></i>
                                     <h6>SIGN UP</h6>
                                 </button>
                             </div>
@@ -77,6 +80,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
 <?php include('../includes/footer.php') ?>

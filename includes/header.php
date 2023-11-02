@@ -13,7 +13,8 @@
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <title>Register</title>
+    <link href="http://localhost/Myproj/assets/css/style.css" rel="stylesheet">
+    <title><?php if(isset($title)){echo $title;} ?></title>
 </head>
 
 <body>
@@ -29,6 +30,9 @@
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
                                 <a class="text-light nav-link active" aria-current="page" href="http://localhost/Myproj/index.php">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="text-light nav-link active" aria-current="page" href="http://localhost/Myproj/listing/list.php">List Property</a>
                             </li>
                             <li class="nav-item">
                                 <a class="text-light nav-link" href="#">About</a>
