@@ -28,7 +28,7 @@
                         'email' => $row['email'],
                     ]; 
                     $_SESSION['status'] = "Login Success";
-                    header("Location: http://localhost/Myproj/dashboard.php");
+                    header("Location: http://localhost/Myproj/Display/home.php");
                 }
                 else
                 {
