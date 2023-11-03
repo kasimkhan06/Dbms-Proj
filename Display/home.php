@@ -55,20 +55,18 @@ include('../includes/header.php');
             <div class="bg-white p-4 rounded-lg shadow-lg">
               <div class="relative">
                 
-                <?php 
-                echo'<img src="'.$items['img_1'].'" class="w-full h-40 object-cover rounded-lg" alt="properties">';
-                ?>
+                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($items['img_1']);?>" class="w-full h-40 object-cover rounded-lg" alt="properties">
                 <?php if ($items['availability'] == 0) { ?>
                   <div class="status sold absolute top-2 right-2 text-white bg-green-500 px-2 py-1 rounded-full">Available</div>
                 <?php } else { ?>
                   <div class="status new absolute top-2 right-2 text-white bg-red-500 px-2 py-1 rounded-full">Not Available</div>
                 <?php } ?>
               </div>
-              <h4 class="mt-2 text-lg font-bold"><a href="property-detail.php?id=<?php echo $items['id']; ?>"><?php echo $items['title']; ?></a></h4>
+              <h4 class="mt-2 text-lg font-bold"><a href="property-detail.php?id=<?php echo $items['property_id']; ?>"><?php echo $items['title']; ?></a></h4>
               <p class="text-gray-600">Price: $<?php echo $items['price']; ?></p>
               <p class="text-gray-600">Property Type: $<?php echo $items['property_type']; ?></p>
               <p class="text-gray-600">BHK: $<?php echo $items['bhk']; ?></p>
-              <a class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" href="property-detail.php?id=<?php echo $items['id']; ?>">View Details</a>
+              <a class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" href="property-detail.php?id=<?php echo $items['property_id']; ?>">View Details</a>
             </div>
             <?php
           }
@@ -84,7 +82,7 @@ include('../includes/header.php');
       {
       while ($property_result = mysqli_fetch_assoc($result)) 
       {
-        $id = $property_result['id'];
+        $id = $property_result['property_id'];
         $property_title = $property_result['title'];
         $delivery_type = $property_result['property_type'];
         $availablility = $property_result['availability'];
@@ -96,7 +94,7 @@ include('../includes/header.php');
         <form action="property-details.php" method="GET">
           <div class="bg-white p-4 rounded-lg shadow-lg">
             <div class="relative">
-              <img src="<?php echo $property_img; ?>" class="w-full h-40 object-cover rounded-lg" alt="properties">
+                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($property_img);?>" class="w-full h-40 object-cover rounded-lg" alt="properties">
               <?php if ($availablility == 0) { ?>
                 <div class="status sold absolute top-2 right-2 text-white bg-green-500 px-2 py-1 rounded-full">Available</div>
               <?php } else { ?>

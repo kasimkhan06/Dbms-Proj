@@ -1,4 +1,4 @@
-<body class="h-full w-full bg-grey-300">
+<body class="h-full w-full bg-grey-600">
 <?php
 $page_title = 'Property Details';
 include('../includes/dbcon.php');
@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
 }
 
 $propid = validate($_GET['id']);
-$query = "SELECT * FROM listings WHERE listings.id = '$propid' LIMIT 1";
+$query = "SELECT * FROM listings WHERE listings.property_id = '$propid' LIMIT 1";
 $result = mysqli_query($con, $query);
 
 if (!$result) {
@@ -38,25 +38,26 @@ $price = $property_result['price'];
 $property_address = $property_result['address'];
 $city = $property_result['city'];
 $state = $property_result['state'];
-$img_1 = $property_result['img_1'];
-$img_2 = $property_result['img_2'];
-$img_3 = $property_result['img_3'];
 $property_type = $property_result['property_type'];
 $floor_space = $property_result['area_size'];
 $bhk = $property_result['bhk'];
 $total_floors = $property_result['total_floors'];
+
+$imgquery = "SELECT img_1, img_2, img_3 FROM listings WHERE listings.property_id = '$propid'";
+$result1 = mysqli_query($con, $imgquery);
+if (!$result1) {
+  echo "Error Found!!!";
+}
+
+$propimg = mysqli_fetch_assoc($result1);
+$img_1 = $propimg['img_1'];
+$img_2 = $propimg['img_2'];
+$img_3 = $propimg['img_3'];
 ?>
-
-<!--  $imagequery = "SELECT * FROM property_image WHERE property_image.property_id = '$propid'";
-    $result_img = mysqli_query($con, $imagequery);
-
-   if (!$result_img) {
-   echo "Error Found!!!";
-} -->
 
 <div class="py-2 bg-secondary">
   <div class="container">
-    <h4 class="text-white text-center">Property Details</h4>
+    <h4 class="text-white text-center text-3xl">Property Details</h4>
   </div>
 </div>
 
@@ -66,7 +67,7 @@ $total_floors = $property_result['total_floors'];
     <div class="col">
     </div>
     <div class="col-6">
-      <h2 class="text-start"><?php echo $property_title ?></h2>
+      <h1 class="text-start text-3xl"><?php echo $property_title ?></h1>
       <div id="imageSlider" class="carousel slide mt-3" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#imageSlider" data-slide-to="0" class="active"></li>
@@ -109,21 +110,18 @@ $total_floors = $property_result['total_floors'];
         </div>
         <p class="p-3 my-2 border border-1 shadow-inner">
           <?php echo $property_address ?>
+          <span class="ml-1"><?php echo $city ?></span>
+          <span class="ml-1"><?php echo $state ?></span>
         </p>
       </div>
     </div>
     <div class="col mt-3">
-      <p class="p-2 my-2 mx-2 border shadow-inner flex items-center">
-        <i class="fa-solid fa-location-dot" style="color: #020408;"></i>
-        <span class="ml-3"><?php echo $property_address ?></span>
-      </p>
-
       <p class="p-2 my-2 mx-2 mt-4 border shadow-inner text-center">
         <span class="ml-3 text-green-600 text-3xl">$<?php echo $price ?></span>
       </p>
 
       <p class="p-2 my-2 mx-2 mt-4 border shadow-inner flex items-center">
-        <span class="w-4 h-4" style="color: #020408;"><img src="./elements/check-square.svg" alt=""></span>
+        <span class="w-4 h-4" style="color: #020408;"><img src="../assets/images/check-square.svg" alt=""></span>
         <b class="ml-2">Availabilty - </b>
         <span class="ml-1"><?php if($availability == 0){echo "Available";} else {echo "Not Available";} ?></span>
       </p>
@@ -134,7 +132,17 @@ $total_floors = $property_result['total_floors'];
       </p>
 
       <p class="p-2 my-2 mx-2 mt-4 border shadow-inner flex items-center">
-        <span class="w-4 h-4" style="color: #020408;"><img src="./elements/check-square.svg" alt=""></span>
+        <i class="fa-solid fa-house" style="color: #020408;"></i>
+        <b class="ml-2">BHK - </b> <span class="ml-1"><?php echo $bhk; ?></span>
+      </p>
+
+      <p class="p-2 my-2 mx-2 mt-4 border shadow-inner flex items-center">
+        <i class="fa-solid fa-house" style="color: #020408;"></i>
+        <b class="ml-2">Total Floors - </b> <span class="ml-1"><?php echo $total_floors; ?></span>
+      </p>
+
+      <p class="p-2 my-2 mx-2 mt-4 border shadow-inner flex items-center">
+        <span class="w-4 h-4" style="color: #020408;"><img src="../assets/images/check-square.svg" alt=""></span>
         <b class="ml-2">Floor Space - </b><span class="ml-1"><?php echo $floor_space ?></span>
       </p>
     </div>
