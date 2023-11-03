@@ -4,7 +4,7 @@
 
     <div class="row y p-2 text-center">
         <div class="col-12 p-1">
-            <h1 class="pb-1 border-bottom d-inline border-secondary border-2" style="font-family:Arial, Helvetica, sans-serif;">Dashboard</h1>
+            <h1 class="pb-2 border-bottom d-inline border-secondary border-2" style="font-family:Arial, Helvetica, sans-serif;">Dashboard</h1>
         </div>
     </div>
 
@@ -50,8 +50,8 @@
                     $img_path = $row['img_1'];
                     $property_id = $row['property_id'];
                     echo '
-                        <div class="col-3 p-1" style="margin:2px 40px 2px 0px ;">
-                            <div class="card border border-2 border-secondary" style="width: 18rem;">
+                        <div class="col-3 p-1" style="margin:2px 5px 2px 0px ;">
+                            <div class="card border border-3 border-tertiary" style="width: 18rem;">
                                 <img src="'.$img_path.'" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">'.$title.'</h5>
@@ -60,6 +60,16 @@
                                 </div>
                             </div>
                          </div>
+                    ';
+                }
+                if($cnt>3)
+                {
+                    echo '
+                        <div class="row mt-2 p-2">
+                            <div class="col-md-2 p-2">
+                                <button type="button" class="btn btn-secondary">View All</button>
+                            </div>
+                        </div>
                     ';
                 }
             }
