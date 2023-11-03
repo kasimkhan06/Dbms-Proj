@@ -26,6 +26,7 @@
                         'username' => $row['name'],
                         'phone' => $row['phone'],
                         'email' => $row['email'],
+                        'id' => $row['user_id'],
                     ]; 
                     $_SESSION['status'] = "Login Success";
                     header("Location: http://localhost/Myproj/dashboard.php");

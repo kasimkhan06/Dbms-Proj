@@ -23,29 +23,21 @@
         $img2path = "property/" . uniqid() . "_" .$_FILES['img-2']['name'];
         $img3path = "property/" . uniqid() . "_" .$_FILES['img-3']['name'];
 
+
+        //to check if all fields are filled
+        if(empty($title) || empty($description) || empty($property_type) || empty($bhk) || empty($total_floors) || empty($price) || empty($area_size) || empty($city) || empty($state) || empty($address) || empty($img1path) || empty($img2path) || empty($img3path)){
+            echo "<script>alert('Please fill all the fields')</script>";
+            //move at the end of this code
+            goto end;
+        }
+
         move_uploaded_file($_FILES['img-1']['tmp_name'], $img1path);
         move_uploaded_file($_FILES['img-2']['tmp_name'], $img2path);
         move_uploaded_file($_FILES['img-3']['tmp_name'], $img3path);
 
-        $query = "INSERT INTO `listings`(`title`, `description`, `property_type`, `bhk`, `total_floors`, `price`, `area_size`, `city`, `state`, `address`, `img_1`, `img_2`, `img_3`) VALUES ('$title','$description','$property_type','$bhk','$total_floors','$price','$area_size','$city','$state','$address','$img1path','$img2path','$img3path')";
-        $result = mysqli_query($con, $query);
+        $user_id = $_SESSION['auth_user']['id'];
 
-        $query = "SELECT property_id FROM listings ORDER BY property_id DESC LIMIT 1";
-        $result = mysqli_query($con, $query);
-
-        $row = mysqli_fetch_assoc($result);
-        $property_id = $row['property_id'];
-
-        //query to get user id from users table using the email
-        $email = $_SESSION['auth_user']['email'];
-        $query = "SELECT user_id FROM users WHERE email = '$email'";
-        $result = mysqli_query($con, $query);
-        $row = mysqli_fetch_assoc($result);
-
-        $user_id = $row['user_id'];
-
-        //query to insert the user id and property id in the lists table
-        $query = "INSERT INTO `lists`(`user_id`, `property_id`) VALUES ('$user_id','$property_id')";
+        $query = "INSERT INTO listings (user_id, title, description, property_type, bhk, total_floors, price, area_size, city, state, address, img_1, img_2, img_3) VALUES ('$user_id', '$title', '$description', '$property_type', '$bhk', '$total_floors', '$price', '$area_size', '$city', '$state', '$address', '$img1path', '$img2path', '$img3path')";
         $result = mysqli_query($con, $query);
 
         if($result){
@@ -55,7 +47,7 @@
             echo "<script>alert('Property Listing Failed')</script>";
         }
     }
-    
+    end:
 ?>
 
 <div class="container my-5 p-5 border border-secondary border-3">

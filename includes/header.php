@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a07d588d75.js" crossorigin="anonymous"></script>
     <link href="http://localhost/Myproj/assets/css/style.css" rel="stylesheet">
@@ -27,9 +28,6 @@
                                 <a class="text-light nav-link active" aria-current="page" href="http://localhost/Myproj/index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="text-light nav-link active" aria-current="page" href="http://localhost/Myproj/list.php">List Property</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="text-light nav-link" href="#">About</a>
                             </li>
                             <li class="nav-item dropdown text-white">
@@ -38,7 +36,7 @@
                                         Login/Register
                                     <?php endif ?>
                                     <?php if (isset($_SESSION['authenticated'])) : ?>
-                                        Logout
+                                        Dashboard
                                     <?php endif ?>
                                 </a>
                                 <ul class="dropdown-menu bg-dark">
@@ -50,6 +48,7 @@
                                     <?php if (isset($_SESSION['authenticated'])) : ?>
                                         <li><a class="dropdown-item text-white" href="http://localhost/Myproj/authentication/logout.php">Logout</a></li>
                                         <li><a class="dropdown-item text-white" href="http://localhost/Myproj/dashboard.php">Dashboard</a></li>
+                                        <li><a class="dropdown-item text-white" href="http://localhost/Myproj/list.php">List Property</a></li>
                                     <?php endif ?>
 
                                 </ul>
