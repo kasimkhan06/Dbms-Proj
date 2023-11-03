@@ -32,7 +32,7 @@
                                 <a class="text-light nav-link active" aria-current="page" href="http://localhost/Myproj/index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="text-light nav-link active" aria-current="page" href="http://localhost/Myproj/listing/list.php">List Property</a>
+                                <a class="text-light nav-link active" aria-current="page" href="http://localhost/Myproj/list.php">List Property</a>
                             </li>
                             <li class="nav-item">
                                 <a class="text-light nav-link" href="#">About</a>
