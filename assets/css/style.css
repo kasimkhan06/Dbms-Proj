@@ -1,3 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
 .page-container {
     background: url('../images/bg.jpg') no-repeat center center fixed;
     margin-top: 50px;
@@ -116,4 +127,171 @@
 .cust-sub-btn:hover{
     background-color: rgb(54, 51, 51);
     color: white;
+}
+
+.page-container1 {
+    max-width: max;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 50px;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero {
+    background: url('../images/luxury_interior1.jpg') center/cover no-repeat;
+    height: 24rem;
+    padding: 2rem 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    color: white;
+    align-self: center;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.search-container {
+display: flex;
+align-items: center;
+}
+
+.search {
+    border: 2px solid #ccc;
+    background-color: #fff;
+    height: 2.5rem;
+    width: 20rem;
+    border-radius: 0.5rem;
+    padding-left: 1rem;
+    font-size: 1rem;
+    outline: none;
+    color: #333;
+    flex: 1;
+}
+
+.search-input::placeholder {
+    color: #999;
+    text-align: center;
+}
+
+.search-symbol {
+    color: #999;
+    padding: 0 0.5rem;
+    width: 2.25rem;
+    height: 2rem;
+}
+
+.search-button {
+    margin-left: 10px;
+    display: inline-block;
+    background-color: #0073e6;
+    border: 2px solid #ccc;
+    height: 2.5rem;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+.search-button:hover {
+    background-color: #005baa;
+}
+
+/* Property grid styles */
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+/* Property card styles */
+.property-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.property-card img {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.property-status {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-weight: bold;
+}
+
+.property-status.sold {
+    background-color: rgb(245, 57, 57);
+    color: white;
+}
+
+.property-status.new {
+    background-color: rgb(20, 163, 20);
+    color: white;
+}
+
+.property-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.property-details {
+    color: #666;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.property-bhk {
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.view-details-button {
+    display: inline-block;
+    background-color: #0073e6;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.view-details-button:hover {
+    background-color: #005baa;
+}
+
+.no-result-message {
+font-size: 1.5rem;
+font-weight: bold;
+color: #808080;
 }
