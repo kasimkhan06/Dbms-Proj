@@ -11,7 +11,7 @@ include('../includes/header.php');
   }
 ?>
 
-<div class="max-w-max justify-center mx-auto">
+<div class="page-container max-w-max justify-center mx-auto">
     <div class="bg-center bg-cover bg-no-repeat h-96 px-8 py-4 mx-auto my-auto mt-8 flex flex-col">
       <div class="div h-80 w-full">
         <header class="mt-16 text-center">
