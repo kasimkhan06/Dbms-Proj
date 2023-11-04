@@ -39,7 +39,7 @@
                         <div class="property-card">
                             <div class="relative">
                                 <img src="<?php echo $items['img_1']; ?>" class="w-full h-40 object-cover rounded-lg" alt="properties">
-                                <?php if ($items['availability'] == 0) { ?>
+                                <?php if ($items['available'] == 0) { ?>
                                     <div class="property-status new">Available</div>
                                 <?php } else { ?>
                                     <div class="property-status sold">Not Available</div>
@@ -70,7 +70,7 @@
                     <div class="property-card">
                         <div class="relative">
                             <img src="<?php echo $property_result['img_1']; ?>" class="w-full h-40 object-cover rounded-lg" alt="properties">
-                            <?php if ($property_result['availability'] == 1) { ?>
+                            <?php if ($property_result['available'] == 0) { ?>
                                 <div class="property-status new">Available</div>
                             <?php } else { ?>
                                 <div class="property-status sold">Not Available</div>
