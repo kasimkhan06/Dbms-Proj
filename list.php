@@ -89,9 +89,9 @@
                     <label class="input-group-text" for="inputGroupSelect01">Property Type</label>
                         <select class="form-select" id="inputGroupSelect01" name="property-type">
                             <option selected>Choose...</option>
-                            <option value="1">Apartment</option>
-                            <option value="2">Villa</option>
-                            <option value="3">Office</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Villa">Villa</option>
+                            <option value="Office">Office</option>
                     </select>
                 </div>
             </div>

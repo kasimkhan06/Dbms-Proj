@@ -48,7 +48,7 @@
                     $title = $row['title'];
                     $description = $row['description'];
                     $img_path = $row['img_1'];
-                    $property_id = $row['property_id'];
+                    $id = $row['property_id'];
                     echo '
                         <div class="col-3 p-1" style="margin:2px 5px 2px 0px ;">
                             <div class="card border border-3 border-tertiary" style="width: 18rem;">
@@ -56,7 +56,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">'.$title.'</h5>
                                     <p class="card-text">'.$description.'</p>
-                                    <a href="http://localhost/Myproj/mng_property.php?property_id='.$property_id.'" class="btn btn-secondary">View Details</a>
+                                    <a href="http://localhost/Myproj/mng_property.php?id='.$id.'" class="btn btn-secondary">View Details</a>
                                 </div>
                             </div>
                          </div>
