@@ -22,7 +22,7 @@
         $img1path = "property/" . uniqid() . "_" .$_FILES['img-1']['name'];
         $img2path = "property/" . uniqid() . "_" .$_FILES['img-2']['name'];
         $img3path = "property/" . uniqid() . "_" .$_FILES['img-3']['name'];
-
+        $available = 1;
 
         //to check if all fields are filled
         if(empty($title) || empty($description) || empty($property_type) || empty($bhk) || empty($total_floors) || empty($price) || empty($area_size) || empty($city) || empty($state) || empty($address) || empty($img1path) || empty($img2path) || empty($img3path)){
