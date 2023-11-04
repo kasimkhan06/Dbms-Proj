@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="mt-3 row justify-content-center">
-            <div class="col-md-6 text-center ">
+            <div class="col-md-12 text-center ">
                 <?php
                 if (isset($_SESSION['status'])) {
                 ?>

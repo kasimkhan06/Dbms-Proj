@@ -76,12 +76,12 @@
         $update_result = mysqli_query($con, $update_query);
 
         if ($update_result) {
-            echo "<script>alert('Property Updated Successfully')</script>";
+            $_SESSION['status'] = "Property Updated Successfully";
         } else {
-            echo "<script>alert('Property Update Failed')</script>";
+            $_SESSION['status'] = "Property Update Failed";
         }
+        header("Location: http://localhost/Myproj/dashboard.php");
     }
-    header("Locatiion: http://localhost/Myproj/dashboard.php");
 ?>
 
 <div class="container my-5 p-5 border border-secondary border-3">
