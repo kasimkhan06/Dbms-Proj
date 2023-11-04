@@ -45,9 +45,9 @@
                                     <div class="property-status sold">Not Available</div>
                                 <?php } ?>
                             </div>
-                            <h4 class="property-title"><a href="property-details.php?id=<?php echo $items['property_id']; ?>">
-                                    <?php echo $items['title']; ?>
-                                </a></h4>
+                            <h4 class="property-title">
+                                <a href="property-details.php?id=<?php echo $items['property_id']; ?>"><?php echo $items['title']; ?></a>
+                            </h4>
                             <p class="property-details">Price: $
                                 <?php echo $items['price']; ?>
                             </p>
@@ -70,10 +70,10 @@
                     <div class="property-card">
                         <div class="relative">
                             <img src="<?php echo $property_result['img_1']; ?>" class="w-full h-40 object-cover rounded-lg" alt="properties">
-                            <?php if ($property_result['availability'] == 0) { ?>
-                                <div class="property-status sold">Available</div>
+                            <?php if ($property_result['availability'] == 1) { ?>
+                                <div class="property-status new">Available</div>
                             <?php } else { ?>
-                                <div class="property-status new">Not Available</div>
+                                <div class="property-status sold">Not Available</div>
                             <?php } ?>
                         </div>
                         <h4 class="property-title"><a href="property-details.php?id=<?php echo $property_result['property_id']; ?>">
