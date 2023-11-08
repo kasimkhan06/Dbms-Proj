@@ -126,7 +126,12 @@ if (isset($_GET['id'])) {
     </div>
     <?php
     //curr user
-    $curr_user = $_SESSION['auth_user']['id'];
+    if(isset($_SESSION['authenticed']))
+    {
+        $curr_user = $_SESSION['auth_user']['id'];
+    }
+    else
+        $curr_user = -1;
     if ($user_id == $curr_user) {
         echo '
                 <div class="row mt-2 p-2 ">
@@ -146,7 +151,7 @@ if (isset($_GET['id'])) {
                                 <label for="exampleTextarea" class="mb-2 text-dark">Comment</label>
                                 <textarea class="form-control text-dark border border-dark border-2" id="exampleTextarea" rows="5" placeholder="Comment" name="comment"></textarea>
                             </div>';
-                            if($_SESSION['authenticated'] == true) echo '<button type="submit" class="btn btn-secondary m-1 p-2" name="cmnt-btn">send</button>';
+                            if(isset($_SESSION['authenticated'])) echo '<button type="submit" class="btn btn-secondary m-1 p-2" name="cmnt-btn">send</button>';
                             else echo '<button type="submit" class="btn btn-secondary m-1 p-2" disabled>send</button>
                             <br><a class="text-danger" style="text-decoration:none;" href="http://localhost/Myproj/authentication/login.php">You need to login to comment</a>';
                         echo '</form>
