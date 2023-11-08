@@ -149,7 +149,7 @@ if (isset($_GET['id'])) {
                             <div class="form-group">
                                 <i class="fa-solid fa-message fa-lg p-1 m-1" style="color: #2b2f36;"></i>
                                 <label for="exampleTextarea" class="mb-2 text-dark">Comment</label>
-                                <textarea class="form-control text-dark border border-dark border-2" id="exampleTextarea" rows="5" placeholder="Comment" name="comment"></textarea>
+                                <textarea class="form-control text-dark border border-dark border-2 " id="exampleTextarea" rows="5" placeholder="Comment" name="comment" style="height:15px;"></textarea>
                             </div>';
                             if(isset($_SESSION['authenticated'])) echo '<button type="submit" class="btn btn-secondary m-1 p-2" name="cmnt-btn">send</button>';
                             else echo '<button type="submit" class="btn btn-secondary m-1 p-2" disabled>send</button>
@@ -175,7 +175,7 @@ if (isset($_GET['id'])) {
             $name = $row2['name'];
             $comment = $row['comment'];
             echo '
-                <div class="comment-box">
+                <div class="comment-box" >
                 <div class="row mt-3 p-3">
                     <div class="col-10 p-1 border border-secondary border-2">
                         <div class="row m-1">
