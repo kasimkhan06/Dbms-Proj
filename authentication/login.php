@@ -1,6 +1,6 @@
 <?php $title = "login";
 include('../includes/header.php');
-include('../includes/authentication.php') ?>
+?>
 
 <div class="page-container">
     <div class="container mt-5">

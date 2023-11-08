@@ -1,4 +1,4 @@
-<?php include('includes/header.php'); ?>
+<?php include('includes/header.php'); include('includes/authentication.php')?>
 
 <div class="mt-2 mb-5 container p-5 " style="height: 1000px;">
 
