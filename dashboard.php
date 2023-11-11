@@ -1,3 +1,4 @@
+
 <?php 
 $title = 'Dashboard';
 include('includes/header.php'); 
@@ -20,7 +21,8 @@ include('includes/header.php');
         list-style: none;
     }
 
-</style>
+
+<?php include('includes/header.php'); include('includes/authentication.php')?>
 
 <div class="mt-2 mb-5 container p-5 " style="height: 1000px;">
 
@@ -29,8 +31,25 @@ include('includes/header.php');
             <h1 class="pb-2 border-bottom d-inline border-secondary" style="font-family:Arial, Helvetica, sans-serif; font-size: xx-large;">Dashboard</h1>
         </div>
     </div>
+  
+    <div class="mt-3 row justify-content-center">
+            <div class="col-md-12 text-center ">
+                <?php
+                if (isset($_SESSION['status'])) {
+                ?>
+                    <div class="alert transparent-alert border-0">
+                        <h5 class="text-white">
+                            <?= $_SESSION['status']; ?>
+                        </h5>
+                    </div>
+                <?php
+                    unset($_SESSION['status']);
+                }
+                ?>
+            </div>
+        </div>
+    <div class="mt-1 row p-2">
 
-    <div class="mt-3 row p-2">
         <div class="col-4 p-1">
             <div class="card" style="width: 25rem;">
                 <div class="card-header">
@@ -68,7 +87,12 @@ include('includes/header.php');
             {
                 $cnt = 0;
                 while(($row = mysqli_fetch_assoc($query_run)) && $cnt < 3)
-                {
+                {   
+                    $available = $row['available'];
+                    if($available == 0)
+                    {
+                        continue;
+                    }
                     $cnt = $cnt + 1;
                     $title = $row['title'];
                     $description = $row['description'];

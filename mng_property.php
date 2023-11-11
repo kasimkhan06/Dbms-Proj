@@ -58,8 +58,10 @@ if (isset($_GET['id'])) {
 
 <div class="mt-5 container p-1" style="height: 1000px;">
     <div class="row m-3">
+
         <div class="col-12 p-2" style="font-family: Arial, Helvetica, sans-serif; font-size: x-large; font-weight: bold; text-transform: capitalize; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             <h3 style="padding-left: 15px;"><?php echo $title ?></h3>
+
         </div>
     </div>    
     <div class="row m-1 p-1">
@@ -135,15 +137,22 @@ if (isset($_GET['id'])) {
     <div class="row mt-3 p-1">
         <div class="col-12 p-2">
             <div class="row m-1">
+
                 <div class="col m-1 p-1 d-flex d-inline border border-secondary border-2" style="box-shadow: 0 4px 6px rgba(1, 0, 0, 0.533);">
                     <i class="fa-solid fa-list fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px;"></i>
-                    <h5 class="p-1" style="margin-top:2px"><?php echo  "$description";; ?></h5>
+                    <h5 class="mt-1 p-2" style="margin-top:2px"><?php echo  "$description";; ?></h5>
                 </div>
             </div>
         </div>
     </div>
     <?php
-    $curr_user = $_SESSION['auth_user']['id'];
+    //curr user
+    if(isset($_SESSION['authenticed']))
+    {
+        $curr_user = $_SESSION['auth_user']['id'];
+    }
+    else
+        $curr_user = -1;
     if ($user_id == $curr_user) {
         echo '
                 <div class="row mt-2 p-2 ">
@@ -153,21 +162,59 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
             ';
-    } else {
-        echo '
+    }
+    echo '
                 <div class="row mt-3 p-3">
                     <div class="col-10 p-1 border border-secondary border-3" style="box-shadow: 0 4px 6px rgba(1, 0, 0, 0.533);">
-                        <form>
+                        <form method ="POST" action="http://localhost/Myproj/comment-code.php?id='.$id.'">
                             <div class="form-group">
-                                <label for="exampleTextarea" class="m-2 p-1 text-dark font-weight-bold">Message Area</label>
-                                <textarea class="form-control text-dark" id="exampleTextarea" rows="5" placeholder="Enter The message Here"></textarea>
+                                <i class="fa-solid fa-message fa-lg p-1 m-1" style="color: #2b2f36;"></i>
+                                <label for="exampleTextarea" class="mb-2 text-dark">Comment</label>
+                                <textarea class="form-control text-dark border border-dark border-2 " id="exampleTextarea" rows="5" placeholder="Comment" name="comment" style="height:15px;"></textarea>
+                            </div>';
+                            if(isset($_SESSION['authenticated'])) echo '<button type="submit" class="btn btn-secondary m-1 p-2" name="cmnt-btn">send</button>';
+                            else echo '<button type="submit" class="btn btn-secondary m-1 p-2" disabled>send</button>
+                            <br><a class="text-danger" style="text-decoration:none;" href="http://localhost/Myproj/authentication/login.php">You need to login to comment</a>';
+                        echo '</form>
+                    </div>
+                </div>';
+    ?>  
+    <div class="row">
+        <div class="col">
+            <h4 class="p-1 m-1 text-dark">Comments</h4>
+        </div>
+    </div>
+    <?php
+        $sql = "SELECT * FROM comments WHERE property_id = '$id'";
+        $query_run = mysqli_query($con, $sql);
+        while($row = mysqli_fetch_assoc($query_run))
+        {
+            $user_id = $row['user_id'];
+            $sql2 = "SELECT * FROM users WHERE user_id = '$user_id'";
+            $query_run2 = mysqli_query($con, $sql2);
+            $row2 = mysqli_fetch_assoc($query_run2);
+            $name = $row2['name'];
+            $comment = $row['comment'];
+            echo '
+                <div class="comment-box" >
+                <div class="row mt-3 p-3">
+                    <div class="col-10 p-1 border border-secondary border-2">
+                        <div class="row m-1">
+                            <div class="col m-1 p-1">
+                                <h5 class="name" style="margin-top:2px">'.$name.'</h5>
                             </div>
-                            <button type="submit" class="btn btn-secondary cust-btn m-3 p-2">send message</button>
-                        </form>
+                        </div>
+                        <div class="row m-1">
+                            <div class="col m-1 p-1">
+                                <p class="comment">'.$comment.'</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        
             ';
-    }
+        }
     ?>
 </div>
 <?php include('includes/footer.php'); ?>

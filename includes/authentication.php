@@ -1,11 +1,7 @@
 <?php
-    if(isset($_SESSION['authenticated']))
+    if(!isset($_SESSION['authenticated']))
     {
-        $_SESSION['status'] = "Already Logged In";
-        header("Location: http://localhost/Myproj/index.php");
-    }
-    else
-    {
-        
+        $_SESSION['status'] = "Login First";
+        header("Location: http://localhost/Myproj/authentication/login.php");
     }
 ?>

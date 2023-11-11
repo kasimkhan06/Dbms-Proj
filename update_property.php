@@ -14,17 +14,18 @@
         if(isset($_GET['id']))
         {
             $id = $_GET['id'];
-            $sql = "DELETE FROM listings WHERE property_id = '$id'";
+            //set available to 0
+            $sql = "UPDATE listings SET available = 0 WHERE property_id = '$id'";
             $query_run = mysqli_query($con, $sql);
             if($query_run)
             {
-                echo "<script>alert('Property Deleted Successfully')</script>";
+                $_SESSION['status'] = "Property Deleted Successfully";
             }
             else
             {
-                echo "<script>alert('Property Deletion Failed')</script>";
+                $_SESSION['status'] = "Property Deletion Failed";
             }
-            // header("Location: http://localhost/Myproj/dashboard.php");
+            header("Location: http://localhost/Myproj/dashboard.php");
         }
     }
 
@@ -75,10 +76,11 @@
         $update_result = mysqli_query($con, $update_query);
 
         if ($update_result) {
-            echo "<script>alert('Property Updated Successfully')</script>";
+            $_SESSION['status'] = "Property Updated Successfully";
         } else {
-            echo "<script>alert('Property Update Failed')</script>";
+            $_SESSION['status'] = "Property Update Failed";
         }
+        header("Location: http://localhost/Myproj/dashboard.php");
     }
 ?>
 
@@ -198,4 +200,4 @@
     </form>
 </div>
 
-<?php include('includes/footer.php'); ?>
+<?php include('includes/footer.php');?>
