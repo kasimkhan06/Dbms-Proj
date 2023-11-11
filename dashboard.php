@@ -1,12 +1,37 @@
+
+<?php 
+$title = 'Dashboard';
+include('includes/header.php'); 
+?>
+
+<style>
+    .user-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .user-info img {
+        width: 100px;
+        height: 100px; 
+        margin-right: 20px; 
+        margin-left: 20px;
+    }
+
+    .list-group {
+        list-style: none;
+    }
+
+
 <?php include('includes/header.php'); include('includes/authentication.php')?>
 
 <div class="mt-2 mb-5 container p-5 " style="height: 1000px;">
 
     <div class="row y p-2 text-center">
         <div class="col-12 p-1">
-            <h1 class="pb-2 border-bottom d-inline border-secondary border-2" style="font-family:Arial, Helvetica, sans-serif;">Dashboard</h1>
+            <h1 class="pb-2 border-bottom d-inline border-secondary" style="font-family:Arial, Helvetica, sans-serif; font-size: xx-large;">Dashboard</h1>
         </div>
     </div>
+  
     <div class="mt-3 row justify-content-center">
             <div class="col-md-12 text-center ">
                 <?php
@@ -24,16 +49,20 @@
             </div>
         </div>
     <div class="mt-1 row p-2">
+
         <div class="col-4 p-1">
             <div class="card" style="width: 25rem;">
                 <div class="card-header">
                     <h4>Account Details</h4>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><?php echo $_SESSION['auth_user']['username'] ?></li>
-                    <li class="list-group-item"><?php echo $_SESSION['auth_user']['phone'] ?></li>
-                    <li class="list-group-item"><?php echo $_SESSION['auth_user']['email'] ?></li>
-                </ul>
+                <div class="user-info">
+                    <img src="assets/images/60111.jpg" alt="User Avatar" class="user_avatar">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><?php echo $_SESSION['auth_user']['username'] ?></li>
+                        <li class="list-group-item"><?php echo $_SESSION['auth_user']['phone'] ?></li>
+                        <li class="list-group-item"><?php echo $_SESSION['auth_user']['email'] ?></li>
+                    </ul>
+                </div>                
             </div>
         </div>
     </div>
