@@ -1,8 +1,8 @@
 <body class="h-full w-full bg-grey-600">
 <?php
 $page_title = 'Property Details';
-include('../includes/dbcon.php');
-include('../includes/header.php');
+include('includes/dbcon.php');
+include('includes/header.php');
 
 function validate($value) {
   if (is_numeric($value) && is_int((int)$value)) {
@@ -149,5 +149,5 @@ $img_3 = $propimg['img_3'];
   </div>
 </div>
 
-<?php include('../includes/footer.php'); ?>
+<?php include('includes/footer.php'); ?>
 </body>

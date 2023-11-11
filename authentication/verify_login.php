@@ -29,7 +29,7 @@
                         'id' => $row['user_id'],
                     ]; 
                     $_SESSION['status'] = "Login Success";
-                    header("Location: http://localhost/Myproj/Display/home.php");
+                    header("Location: http://localhost/Myproj/home.php");
                 }
                 else
                 {

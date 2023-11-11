@@ -7,7 +7,8 @@
     if (!isset($_SESSION['authenticated'])) {
         header('location: http://localhost/Myproj/authentication/login.php');
     }
-    if(isset($_POST['submit-btn'])){
+    if(isset($_POST['submit-btn']))
+    {
         $title = $_POST['title'];
         $description = $_POST['description'];
         $property_type = $_POST['property-type'];
@@ -27,27 +28,22 @@
         //to check if all fields are filled
         if(empty($title) || empty($description) || empty($property_type) || empty($bhk) || empty($total_floors) || empty($price) || empty($area_size) || empty($city) || empty($state) || empty($address) || empty($img1path) || empty($img2path) || empty($img3path)){
             echo "<script>alert('Please fill all the fields')</script>";
-            //move at the end of this code
-            goto end;
         }
+                move_uploaded_file($_FILES['img-1']['tmp_name'], $img1path);
+                move_uploaded_file($_FILES['img-2']['tmp_name'], $img2path);
+                move_uploaded_file($_FILES['img-3']['tmp_name'], $img3path);
 
-        move_uploaded_file($_FILES['img-1']['tmp_name'], $img1path);
-        move_uploaded_file($_FILES['img-2']['tmp_name'], $img2path);
-        move_uploaded_file($_FILES['img-3']['tmp_name'], $img3path);
+                $user_id = $_SESSION['auth_user']['id'];
 
-        $user_id = $_SESSION['auth_user']['id'];
+                $query = "INSERT INTO listings (user_id, title, description, property_type, bhk, total_floors, price, area_size, city, state, address, img_1, img_2, img_3) VALUES ('$user_id', '$title', '$description', '$property_type', '$bhk', '$total_floors', '$price', '$area_size', '$city', '$state', '$address', '$img1path', '$img2path', '$img3path')";
+                $result = mysqli_query($con, $query);
 
-        $query = "INSERT INTO listings (user_id, title, description, property_type, bhk, total_floors, price, area_size, city, state, address, img_1, img_2, img_3) VALUES ('$user_id', '$title', '$description', '$property_type', '$bhk', '$total_floors', '$price', '$area_size', '$city', '$state', '$address', '$img1path', '$img2path', '$img3path')";
-        $result = mysqli_query($con, $query);
-
-        if($result){
-            echo "<script>alert('Property Listed Successfully')</script>";
-        }
-        else{
-            echo "<script>alert('Property Listing Failed')</script>";
-        }
+                if ($result) {
+                    echo "<script>alert('Property Listed Successfully')</script>";
+                } else {
+                    echo "<script>alert('Property Listing Failed')</script>";
+                }
     }
-    end:
 ?>
 
 <div class="container my-5 p-5 border border-secondary border-3">
@@ -202,7 +198,6 @@
             </div>
         </div>
     </form>
-
 </div>
 
 <?php include('includes/footer.php'); ?>

@@ -3,9 +3,27 @@ $page_title = 'Property Details';
 include('includes/dbcon.php');
 include('includes/header.php');
 
+function validate($value) {
+    if (is_numeric($value) && is_int((int)$value)) {
+      return (int)$value;
+    } else {
+      return null;
+    }
+  }
+  
+  if (isset($_GET['id'])) {
+    if ($_GET['id'] == null) {
+      header("Location: index.php");
+      exit;
+    }
+  } else {
+    header("Location: index.php");
+    exit;
+  }
+
 //to check if id is set
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    $id = validate($_GET['id']);
     $sql = "SELECT * FROM listings WHERE property_id = '$id' LIMIT 1";
     $query_run = mysqli_query($con, $sql);
     if ($query_run) {
@@ -32,7 +50,7 @@ if (isset($_GET['id'])) {
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col text-center bg-secondary" style="font-family:Arial, Helvetica, sans-serif" ;>
+        <div class="col text-center bg-secondary" style="font-family:Arial, Helvetica, sans-serif; font-size: x-large; font-weight: bold;" ;>
             <h4 class="p-1 m-1 text-dark">Property Details</h4>
         </div>
     </div>
@@ -40,10 +58,10 @@ if (isset($_GET['id'])) {
 
 <div class="mt-5 container p-1" style="height: 1000px;">
     <div class="row m-3">
-        <div class="col-12 border border-3 border-dark p-2" style="font-family:Arial, Helvetica, sans-serif;" ;>
+        <div class="col-12 p-2" style="font-family: Arial, Helvetica, sans-serif; font-size: x-large; font-weight: bold; text-transform: capitalize; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             <h3 style="padding-left: 15px;"><?php echo $title ?></h3>
         </div>
-    </div>
+    </div>    
     <div class="row m-1 p-1">
         <div class="col-6 p-1">
             <div id="carouselExampleIndicators" class="carousel slide">
@@ -75,38 +93,38 @@ if (isset($_GET['id'])) {
         </div>
         <div class="col-6 p-1">
             <div class="row m-1">
-                <div class="col border border-3 border-dark m-1 p-1 d-flex d-inline">
-                    <i class="fa-solid fa-house fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px;"></i>
+                <div class="col border border-2 border-dark m-1 p-1 d-flex d-inline" style="box-shadow: 0 4px 6px rgba(1, 0, 0, 0.533);">
+                    <i class="fa-solid fa-house fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px; box-shadow: 0 4px 6px rgba(49, 49, 49, 0.407);"></i>
                     <h5 class="p-1" style="margin-top:2px"><?php echo $property_type; ?></h5>
                 </div>
             </div>
-            <div class="row m-1">
-                <div class="col border border-3 border-dark m-1 p-1 d-flex d-inline">
-                    <i class="fa-solid fa-building fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px;"></i>
+            <div class="row m-1 mt-2">
+                <div class="col border border-2 border-dark m-1 p-1 d-flex d-inline" style="box-shadow: 0 4px 6px rgba(1, 0, 0, 0.533);">
+                    <i class="fa-solid fa-building fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px; box-shadow: 0 4px 6px rgba(49, 49, 49, 0.407);"></i>
                     <h5 class="p-1" style="margin-top:2px"><?php echo  "$bhk BHK"; ?></h5>
                 </div>
             </div>
-            <div class="row m-1">
-                <div class="col border border-3 border-dark m-1 p-1 d-flex d-inline">
-                    <i class="fa-solid fa-building fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px;"></i>
+            <div class="row m-1 mt-2">
+                <div class="col border border-2 border-dark m-1 p-1 d-flex d-inline" style="box-shadow: 0 4px 6px rgba(1, 0, 0, 0.533);">
+                    <i class="fa-solid fa-building fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px; box-shadow: 0 4px 6px rgba(49, 49, 49, 0.407);"></i>
                     <h5 class="p-1" style="margin-top:2px"><?php echo  "$total_floors FLOORS"; ?></h5>
                 </div>
             </div>
-            <div class="row m-1">
-                <div class="col border border-3 border-dark m-1 p-1 d-flex d-inline">
-                    <i class="fa-solid fa-indian-rupee-sign fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px;"></i>
-                    <h5 class="p-1 text-success" style="margin-top:2px"><?php echo  "$price";; ?></h5>
+            <div class="row m-1 mt-2">
+                <div class="col border border-2 border-dark m-1 p-1 d-flex d-inline" style="box-shadow: 0 4px 6px rgba(1, 0, 0, 0.533);">
+                    <i class="fa-solid fa-indian-rupee-sign fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px; box-shadow: 0 4px 6px rgba(49, 49, 49, 0.407);"></i>                    
+                    <h5 class="p-1" style="margin-top:2px"><?php echo  "$price";; ?></h5>
                 </div>
             </div>
-            <div class="row m-1">
-                <div class="col border border-3 border-dark m-1 p-1 d-flex d-inline">
-                    <i class="fa-solid fa-chart-area fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px;"></i>
+            <div class="row m-1 mt-2">
+                <div class="col border border-2 border-dark m-1 p-1 d-flex d-inline" style="box-shadow: 0 4px 6px rgba(1, 0, 0, 0.533);">
+                    <i class="fa-solid fa-chart-area fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px; box-shadow: 0 4px 6px rgba(49, 49, 49, 0.407);"></i>
                     <h5 class="p-1" style="margin-top:2px"><?php echo  "$area_size sqmts";; ?></h5>
                 </div>
             </div>
-            <div class="row m-1">
-                <div class="col border border-3 border-dark m-1 p-1 d-flex d-inline">
-                    <i class="fa-solid fa-location-dot fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px;"></i>
+            <div class="row m-1 mt-2">
+                <div class="col border border-2 border-dark m-1 p-1 d-flex d-inline" style="box-shadow: 0 4px 6px rgba(1, 0, 0, 0.533);">
+                    <i class="fa-solid fa-location-dot fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px; box-shadow: 0 4px 6px rgba(49, 49, 49, 0.407);"></i>
                     <h5 class="p-1" style="margin-top:2px"><?php echo  "$address";; ?></h5>
                 </div>
             </div>
@@ -117,7 +135,7 @@ if (isset($_GET['id'])) {
     <div class="row mt-3 p-1">
         <div class="col-12 p-2">
             <div class="row m-1">
-                <div class="col border border-3 border-dark m-1 p-1 d-flex d-inline">
+                <div class="col m-1 p-1 d-flex d-inline border border-secondary border-2" style="box-shadow: 0 4px 6px rgba(1, 0, 0, 0.533);">
                     <i class="fa-solid fa-list fa-lg p-2" style="color: #333538; margin-top:9px; margin-right:20px;"></i>
                     <h5 class="p-1" style="margin-top:2px"><?php echo  "$description";; ?></h5>
                 </div>
@@ -125,7 +143,6 @@ if (isset($_GET['id'])) {
         </div>
     </div>
     <?php
-    //curr user
     $curr_user = $_SESSION['auth_user']['id'];
     if ($user_id == $curr_user) {
         echo '
@@ -139,7 +156,7 @@ if (isset($_GET['id'])) {
     } else {
         echo '
                 <div class="row mt-3 p-3">
-                    <div class="col-10 p-1 border border-secondary border-3">
+                    <div class="col-10 p-1 border border-secondary border-3" style="box-shadow: 0 4px 6px rgba(1, 0, 0, 0.533);">
                         <form>
                             <div class="form-group">
                                 <label for="exampleTextarea" class="m-2 p-1 text-dark font-weight-bold">Message Area</label>
@@ -153,9 +170,4 @@ if (isset($_GET['id'])) {
     }
     ?>
 </div>
-
-
-
-
-
 <?php include('includes/footer.php'); ?>
