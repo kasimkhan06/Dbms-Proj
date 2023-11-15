@@ -21,10 +21,10 @@ include('includes/header.php');
         list-style: none;
     }
 
-
+</style>
 <?php include('includes/header.php'); include('includes/authentication.php')?>
 
-<div class="mt-2 mb-5 container p-5 " style="height: 1000px;">
+<div class="mt-2 mb-5 container p-5" style="height: 1000px;">
 
     <div class="row y p-2 text-center">
         <div class="col-12 p-1">
